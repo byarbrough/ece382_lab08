@@ -60,3 +60,10 @@ unsigned short	getFrontVal(){
 
 	return ADC10MEM;
 }
+
+/**
+ * compares the  distances of the left and right sensors
+ */
+signed int compareSideDist(){
+	return 0;
+}

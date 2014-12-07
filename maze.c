@@ -12,35 +12,39 @@ void main(void) {
 
 	_delay_cycles(LONG_T);		//let use move out of way
 	
+	signed int sensDif = 0;
+
 	while(1){			//infinite loop
-		while (the front sensor is less than threshold0{
-					//go straight
-					get the left/ right difference
-						this will be done my subtracting getRight() from getLeft()
-						also may need to be normailzed with reference to the characterization
-							from A funct, lab07
+		while (getFrontVal() < FRONT_WALL_NR){ //not headed into a wall
+			//navigage maze
+			drive(FORWARD);		// go forward
 
+			sensDif = compareSideDist();	//compare sides
 
-					if (left < right) {
-						increase left, decrease right
-					}
-					else if (left > right) {
-						decrea right, increase left
-					}
+			if (sensDif < 0) { //left closer to wall
+				TA1CCR1++;		//increase left power
+				TA1CCR2--;		//decrease right power
+			}
+			else if (sensDif > 0) {//right closer to wall
+				TA1CCR1--;		//decrease left power
+				TA1CCR2++;		//increase right power
+			}
 
-					delay, so not jerky?
+			_delay_cycles(1000);		//delay
 
-				}//there is a wall
+		}//there is a wall
 
-				stop the robot
-				wait
-				compare sensors
-				if (left < right) {
-					turn right
-				}
-				else {
-					turn left
-				}
-				stop, delay - will loop and go forward again
+		GO_STOP;
+		_delay_cycles(500);
+
+		if (compareSideDist < 0) {//wall on left
+			drive(RIGHT_T);			//turn right
+		}
+		else {
+			drive(LEFT_T);			//turn left
+		}
+		GO_STOP;
+		_delay_cycles(500);
+
 	}//end infinite loop
 }//end main

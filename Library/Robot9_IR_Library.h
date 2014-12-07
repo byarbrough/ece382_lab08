@@ -20,6 +20,7 @@
 unsigned short	getRightVal();
 unsigned short	getLeftVal();
 unsigned short	getFrontVal();
+signed	 int	compareSideDist();
 
 
 #endif /* ROBOT9_IR_LIBRARY_H_ */
