@@ -1,0 +1,45 @@
+#include msp430, maze header, ir header
+	this will also require an implementation file
+
+void main(){
+	initialize motor pins and LEDs, calibrate clock, ect.
+	
+	_delay_cycles() so the user can move
+	
+	calibrating the sensors would be nice?
+	
+	while(1){	//infinite loop
+		while (the front sensor is less than threshold0{
+			//go straight
+			get the left/ right difference
+				this will be done my subtracting getRight() from getLeft()
+				also may need to be normailzed with reference to the characterization
+					from A funct, lab07
+				
+			
+			if (left < right) {
+				increase left, decrease right
+			}
+			else if (left > right) {
+				decrea right, increase left
+			}
+			
+			delay, so not jerky?
+			
+		}//there is a wall
+		
+		stop the robot
+		wait
+		compare sensors
+		if (left < right) {
+			turn right
+		}
+		else {
+			turn left
+		}
+		stop, delay - will loop and go forward again
+	}//end infinite while
+}//end main
+
+put the Timer A interrupts here
+	i already have these coded from Lab6!
