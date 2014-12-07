@@ -1,3 +1,11 @@
+/***************
+ *  Authro: Brian Yarbrough
+ *  Date: 6 Dec 14
+ *  Device: TI MSP430 with ECE 382, Robot #9
+ *  Instructor: Capt Trimble
+ *
+ *//////////////////////////////////////////////
+
 #include <msp430.h> 
 #include "maze.h"
 #include "Library/Robot9_IR_Library.h"

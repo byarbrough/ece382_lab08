@@ -3,7 +3,7 @@
  *
  *  Created on: Dec 4, 2014
  *      Author: C16Brian.Yarbrough
- *      Works with
+ *      Works with header file to control IR sensors on robot
  */
 
 #include <msp430.h>
@@ -63,7 +63,15 @@ unsigned short	getFrontVal(){
 
 /**
  * compares the  distances of the left and right sensors
+ * Returns: positive if right closer to wall
+ * 	negative if left closer to wall
  */
 signed int compareSideDist(){
-	return 0;
+	_delay_cycles(16);
+
+	unsigned short righty = getRightVal();
+	_delay_cycles(58);
+	unsigned short lefty = getLeftVal();
+
+	return righty - lefty;
 }
