@@ -47,19 +47,19 @@ void initMotors(){
 */
 void drive(direction movement){
 	GO_STOP;
-	_delay_cycles(SHORT_T);
+	_delay_cycles(100);
 
 	switch(movement){
-	case	FORWARD:
+	case	BACKWARD:
 		TA1CCTL1 = OUTMOD_7;
 		TA1CCTL2 = OUTMOD_7;
-		GO_FORWARD;
+		GO_BACKWARD;
 		break;
 
-	case	BACKWARD:
+	case	FORWARD:
 		TA1CCTL1 = OUTMOD_3;
 		TA1CCTL2 = OUTMOD_3;
-		GO_BACKWARD;
+		GO_FORWARD;
 		break;
 
 	case	LEFT_T:

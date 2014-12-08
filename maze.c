@@ -23,22 +23,27 @@ void main(void) {
 	signed int sensDif = 0;
 
 	while(1){			//infinite loop
+		unsigned int firstPWM = 500;
+		unsigned int secondPWM = 500;
+
 		while (getFrontVal() < FRONT_WALL_NR){ //not headed into a wall
 			//navigage maze
+			TA1CCR1 = firstPWM;
+			TA1CCR2 = secondPWM;
 			drive(FORWARD);		// go forward
+			_delay_cycles(SHORT_T);
 
 			sensDif = compareSideDist();	//compare sides
 
 			if (sensDif < 0) { //left closer to wall
-				TA1CCR1++;		//increase left power
-				TA1CCR2--;		//decrease right power
+				firstPWM += 0xF;		//increase left power
+				secondPWM -= 0xF;		//decrease right power
 			}
 			else if (sensDif > 0) {//right closer to wall
-				TA1CCR1--;		//decrease left power
-				TA1CCR2++;		//increase right power
+				firstPWM -= 0xF;		//decrease left power
+				secondPWM += 0xF;		//increase right power
 			}
-
-			_delay_cycles(1000);		//delay
+			_delay_cycles(100);		//delay
 
 		}//there is a wall
 
@@ -51,8 +56,9 @@ void main(void) {
 		else {
 			drive(LEFT_T);			//turn left
 		}
+		_delay_cycles(SHORT_T);
 		GO_STOP;
-		_delay_cycles(500);
+		_delay_cycles(100);
 
 	}//end infinite loop
 }//end main
