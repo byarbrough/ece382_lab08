@@ -13,13 +13,18 @@
 #ifndef ROBOT9_IR_LIBRARY_H_
 #define ROBOT9_IR_LIBRARY_H_
 
-#define 	FRONT_WALL_NR	0x0185
-#define		LEFT_WALL_NR	0x0185
-#define		RIGHT_WALL_NR	0x0185
+#define 	FRONT_WALL_5	0xC0  	//~five inches
+#define		LEFT_WALL_5		0x181
+#define		RIGHT_WALL_5	0x31A
+#define		FRONT_WALL_10	0x5A	//~ten inches
+#define 	LEFT_WALL_10	0x95
+#define 	RIGHT_WALL_10	0x13F
 
 unsigned short	getRightVal();
 unsigned short	getLeftVal();
 unsigned short	getFrontVal();
+unsigned short	getRightInch();
+unsigned short	getLeftInch();
 signed	 int	compareSideDist();
 
 

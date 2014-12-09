@@ -26,7 +26,7 @@ void main(void) {
 		unsigned int firstPWM = 500;
 		unsigned int secondPWM = 500;
 
-		while (getFrontVal() < FRONT_WALL_NR){ //not headed into a wall
+		while (getFrontVal() < FRONT_WALL_5){ //not headed into a wall
 			//navigage maze
 			TA1CCR1 = firstPWM;
 			TA1CCR2 = secondPWM;

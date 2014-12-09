@@ -61,6 +61,16 @@ unsigned short	getFrontVal(){
 	return ADC10MEM;
 }
 
+unsigned short getRightInch(){
+	unsigned short raw = getRightVal();
+	return (12*raw*raw) - (277*raw) + 1859;
+}
+
+
+unsigned short getLeftInch(){
+	unsigned short raw = getLeftVal();
+	return (13*raw*raw) - (268*raw) + 1447;
+}
 /**
  * compares the  distances of the left and right sensors
  * Returns: positive if right closer to wall
@@ -69,9 +79,9 @@ unsigned short	getFrontVal(){
 signed int compareSideDist(){
 	_delay_cycles(16);
 
-	unsigned short righty = getRightVal();
+	unsigned short righty = getRightInch();
 	_delay_cycles(58);
-	unsigned short lefty = getLeftVal();
+	unsigned short lefty = getLeftInch();
 
 	return righty - lefty;
 }
