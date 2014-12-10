@@ -19,7 +19,18 @@ void main(void) {
 	initMotors();				//initialize the system
 
 	_delay_cycles(LONG_T);		//let use move out of way
+	P1OUT |= BIT6;
 	
+	while(TRUE){
+		drive(FORWARD);
+		
+		while( getFrontVal > FRONT_WALL_5);
+		
+		drive(LEFT_T);
+		P1OUT &= ~BIT6;
+		_delay_cycles(SHORT_T);
+	}
+	/*
 	signed int sensDif = 0;
 
 	while(1){			//infinite loop
@@ -61,4 +72,5 @@ void main(void) {
 		_delay_cycles(100);
 
 	}//end infinite loop
+	*/
 }//end main
