@@ -18,17 +18,23 @@ void main(void) {
 
 	initMotors();				//initialize the system
 
-	_delay_cycles(LONG_T);		//let use move out of way
+	P1DIR |= BIT6;
 	P1OUT |= BIT6;
+	_delay_cycles(LONG_T);		//let use move out of way
 	
+
 	while(TRUE){
 		drive(FORWARD);
 		
-		while( getFrontVal > FRONT_WALL_5);
+		while( getRightVal() < RIGHT_WALL_NR){
+			_delay_cycles(1600);
+		}
+
+		GO_STOP;
 		
-		drive(LEFT_T);
+		//drive(LEFT_T);
+		_delay_cycles(LONG_T);
 		P1OUT &= ~BIT6;
-		_delay_cycles(SHORT_T);
 	}
 	/*
 	signed int sensDif = 0;

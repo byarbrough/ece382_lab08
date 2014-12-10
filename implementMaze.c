@@ -65,14 +65,12 @@ void drive(direction movement){
 	case	LEFT_T:
 		TA1CCTL1 = OUTMOD_7;
 		TA1CCTL2 = OUTMOD_3;
-		GO_FORWARD;
 		GO_LEFT;
 		break;
 
 	case	RIGHT_T:
 		TA1CCTL1 = OUTMOD_3;
 		TA1CCTL2 = OUTMOD_7;
-		GO_FORWARD;
 		GO_RIGHT;
 		break;
 

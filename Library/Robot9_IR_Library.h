@@ -20,6 +20,10 @@
 #define 	LEFT_WALL_10	0x95
 #define 	RIGHT_WALL_10	0x13F
 
+#define 	FRONT_WALL_NR	0x0185
+#define		LEFT_WALL_NR	0x0185
+#define		RIGHT_WALL_NR	0x0185
+
 unsigned short	getRightVal();
 unsigned short	getLeftVal();
 unsigned short	getFrontVal();
