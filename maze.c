@@ -10,6 +10,8 @@
 #include "maze.h"
 #include "Library/Robot9_IR_Library.h"
 
+unsigned int FRONTREAD = 0;
+
 /*
  * main.c
  */
@@ -24,9 +26,10 @@ void main(void) {
 	
 
 	while(TRUE){
-		drive(FORWARD);
+		drive(BACKWARD);
+		P1OUT |= BIT6;
 		
-		while( getRightVal() < RIGHT_WALL_NR){
+		while( getFrontVal() < FRONT_WALL_NR){
 			_delay_cycles(1600);
 		}
 
