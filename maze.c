@@ -10,7 +10,7 @@
 #include "maze.h"
 #include "Library/Robot9_IR_Library.h"
 
-unsigned int FRONTREAD = 0;
+unsigned short distance;
 
 /*
  * main.c
@@ -22,22 +22,25 @@ void main(void) {
 
 	P1DIR |= BIT6;
 	P1OUT |= BIT6;
-	_delay_cycles(LONG_T);		//let use move out of way
+	_delay_cycles(SHORT_T);		//let use move out of way
 	
 
 	while(TRUE){
 		drive(BACKWARD);
 		P1OUT |= BIT6;
 		
-		while( getFrontVal() < FRONT_WALL_NR){
+
+		while(distance < 0x200){
+			distance = getFrontVal();
 			_delay_cycles(1600);
 		}
 
 		GO_STOP;
 		
-		//drive(LEFT_T);
-		_delay_cycles(LONG_T);
+		drive(LEFT_T);
 		P1OUT &= ~BIT6;
+		_delay_cycles(LONG_T);
+
 	}
 	/*
 	signed int sensDif = 0;
