@@ -5,16 +5,10 @@
  *      Author: C16Brian.Yarbrough
  */
 
-#include <msp430.h>
-#include "maze.h"
-#include "Library/Robot9_IR_Library.h"
 
-void initMotors(){
-	IFG1=0; 					// clear interrupt flag1
 
-	P1DIR |= BIT0 | BIT6;				// Enable updates to the LED
-	P1OUT &= ~(BIT0 | BIT6);			// An turn the LED off
 
+<<<<<<< HEAD
 	P1DIR &= ~BIT3;
 	P1REN |= BIT3;
 
@@ -81,3 +75,5 @@ void drive(direction movement){
 
 	ENABLE_MOTORS;
 }
+=======
+>>>>>>> parent of 23a0d5a... creating shell code
