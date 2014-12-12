@@ -11,31 +11,30 @@ void main(void) {
 	WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
 	P1DIR |= BIT0;
 
-	unsigned short leftIn = 0x3FF;
+	BCSCTL1 = CALBC1_8MHZ;
+	DCOCTL = CALDCO_8MHZ;
+	ADC10CTL0 = 0;
 
 	initMotors();				//initialize the system
 
 	_delay_cycles(SHORT_T);		//let use move out of way
 	
 	while(1){			//infinite loop
-		drive(FORWARD);
-		while (getLeftVal() > 0x290){ //leftIn < 0x290){
-			leftIn = 0;
+
+		if (getLeftVal() > 0x290){ //leftIn < 0x290){
 			P1OUT &= ~BIT0;
-
-			_delay_cycles(1600);
-			char i;
-			for (i = 0; i++; i < 8){
-				leftIn += getLeftVal();
-			}
-			leftIn = leftIn >> 3;
-
+			drive(FORWARD);
 		}
+		else {
+			GO_STOP;
+			_delay_cycles(3000000);
 		//initMotors();
 		P1OUT |= BIT0;
-		drive(LEFT_T);
-
+		drive(RIGHT_T);
 		_delay_cycles(LONG_T);
+		GO_STOP;
+		}
+		_delay_cycles(1000);
 
 	}//end infinite loop
 }//end main

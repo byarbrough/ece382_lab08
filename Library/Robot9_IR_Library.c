@@ -34,8 +34,8 @@ unsigned short	getRightVal(){
 unsigned short	getLeftVal(){
 	// Configure P1.3 to be the ADC input
 	ADC10CTL0 = 0;										// Turn off ADC subsystem
-	ADC10CTL1 = INCH_3 | ADC10DIV_3 ;					// Channel 4, ADC10CLK/4
 	ADC10AE0 = BIT3;		 							// Make P1.3 analog input
+	ADC10CTL1 = INCH_3 | ADC10DIV_3 ;					// Channel 4, ADC10CLK/4
 	ADC10CTL0 = SREF_0 | ADC10SHT_3 | ADC10ON | ENC;	// Vcc & Vss as reference
 
 	ADC10CTL0 |= ADC10SC;								// Start a conversion
