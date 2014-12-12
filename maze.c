@@ -36,10 +36,9 @@ void main(void) {
 		P1OUT &= ~BIT0;
 		drive(RIGHT_T);
 		_delay_cycles(SHORT_T);
-		//GO_STOP;
-		}
 		drive(FORWARD);
 		_delay_cycles(1000);
+		}
 
 	}//end infinite loop
 }//end main
