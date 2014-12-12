@@ -38,6 +38,24 @@ void main(void) {
 		_delay_cycles(SHORT_T);
 		drive(FORWARD);
 		_delay_cycles(1000);
+
+		while(1){
+			frontRead  = readADC(3);
+			if (frontRead < 0x300){ //leftIn < 0x290){
+				P1OUT |= BIT0;
+				drive(FORWARD);
+				_delay_cycles(3000);
+			}
+			else {
+			drive(BACKWARD);
+			_delay_cycles(2500000);
+			//initMotors();
+			P1OUT &= ~BIT0;
+			drive(LEFT_T);
+			_delay_cycles(SHORT_T);
+			drive(FORWARD);
+			_delay_cycles(1000);
+		}
 		}
 
 	}//end infinite loop
