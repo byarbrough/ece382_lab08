@@ -15,9 +15,6 @@ void initMotors(){
 	P1DIR |= BIT0 | BIT6;				// Enable updates to the LED
 	P1OUT &= ~(BIT0 | BIT6);			// An turn the LED off
 
-	P1DIR &= ~BIT3;
-	P1REN |= BIT3;
-
 	P2DIR |= BIT2;							// P2.2 is associated with TA1CCR1
 	P2SEL |= BIT2;							// P2.2 is associated with TA1CCTL1
 
@@ -33,7 +30,7 @@ void initMotors(){
 	TA1CCR1 = 500;
 	TA1CCTL1 = OUTMOD_3;					// set TACCTL1 to Reset / Set mode
 
-	TA1CCR2 = 500;
+	TA1CCR2 = 530;
 	TA1CCTL2 = OUTMOD_3;					// set TACCTL1 to Reset / Set mode
 
 	GO_STOP;

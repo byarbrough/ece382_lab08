@@ -22,7 +22,7 @@ typedef enum	{FORWARD, BACKWARD, LEFT_T, RIGHT_T, STOP} direction;
 #define		GO_STOP			P2OUT &= ~(BIT0 | BIT5)
 #define		RLONG_T			0x2000000
 #define		LONG_T			0x400000
-#define		SHORT_T			0x200000
+#define		SHORT_T			0x370000
 
 #define		TRUE				1
 #define		FALSE				0
