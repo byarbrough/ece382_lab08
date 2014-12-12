@@ -5,11 +5,16 @@
  *      Author: C16Brian.Yarbrough
  */
 
+#include <msp430.h>
+#include "maze.h"
+#include "Library/Robot9_IR_Library.h"
 
+void initMotors(){
+	IFG1=0; 					// clear interrupt flag1
 
+	P1DIR |= BIT0 | BIT6;				// Enable updates to the LED
+	P1OUT &= ~(BIT0 | BIT6);			// An turn the LED off
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 	P1DIR &= ~BIT3;
 	P1REN |= BIT3;
 
@@ -41,31 +46,33 @@
 * accepts a direction and moves the robot in that direction
 */
 void drive(direction movement){
-	GO_STOP;
-	_delay_cycles(100);
+	/*GO_STOP;
+	_delay_cycles(SHORT_T);*/
 
 	switch(movement){
-	case	BACKWARD:
+	case	FORWARD:
 		TA1CCTL1 = OUTMOD_7;
 		TA1CCTL2 = OUTMOD_7;
-		GO_BACKWARD;
+		GO_FORWARD;
 		break;
 
-	case	FORWARD:
+	case	BACKWARD:
 		TA1CCTL1 = OUTMOD_3;
 		TA1CCTL2 = OUTMOD_3;
-		GO_FORWARD;
+		GO_BACKWARD;
 		break;
 
 	case	LEFT_T:
 		TA1CCTL1 = OUTMOD_7;
 		TA1CCTL2 = OUTMOD_3;
+		GO_FORWARD;
 		GO_LEFT;
 		break;
 
 	case	RIGHT_T:
 		TA1CCTL1 = OUTMOD_3;
 		TA1CCTL2 = OUTMOD_7;
+		GO_FORWARD;
 		GO_RIGHT;
 		break;
 
@@ -76,7 +83,3 @@ void drive(direction movement){
 
 	ENABLE_MOTORS;
 }
-=======
->>>>>>> parent of 23a0d5a... creating shell code
-=======
->>>>>>> parent of 23a0d5a... creating shell code
