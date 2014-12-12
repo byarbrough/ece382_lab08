@@ -17,6 +17,7 @@ unsigned short distance;
  */
 void main(void) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
 
 	initMotors();				//initialize the system
@@ -87,6 +88,12 @@ void main(void) {
 	}//end infinite loop
 	*/
 }//end main
+=======
+    WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
+	
+
+}
+>>>>>>> parent of 23a0d5a... creating shell code
 =======
     WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
 	

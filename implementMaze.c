@@ -9,6 +9,7 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	P1DIR &= ~BIT3;
 	P1REN |= BIT3;
 
@@ -75,5 +76,7 @@ void drive(direction movement){
 
 	ENABLE_MOTORS;
 }
+=======
+>>>>>>> parent of 23a0d5a... creating shell code
 =======
 >>>>>>> parent of 23a0d5a... creating shell code
