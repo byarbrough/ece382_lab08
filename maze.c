@@ -18,10 +18,11 @@ void main(void) {
 	initMotors();				//initialize the system
 
 	_delay_cycles(SHORT_T);		//let use move out of way
+	int frontRead = 16;
 	
 	while(1){			//infinite loop
-
-		if (getLeftVal() > 0x290){ //leftIn < 0x290){
+		frontRead  = getFrontVal();
+		if (frontRead > 0x290){ //leftIn < 0x290){
 			P1OUT &= ~BIT0;
 			drive(FORWARD);
 		}

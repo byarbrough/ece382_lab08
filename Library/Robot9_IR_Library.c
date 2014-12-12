@@ -48,22 +48,19 @@ unsigned short	getLeftVal(){
  * converts the analong input from the front sensors - 1.4
  * Returns: digital value from ADC
  */
-unsigned short	getFrontVal(){
-	char i;
-	unsigned short val = 0;
-	for(  i = 0; i < 4; i++){
-		// Configure P1.4 to be the ADC input
-		ADC10CTL0 = 0;										// Turn off ADC subsystem
-		ADC10CTL1 = INCH_4 | ADC10DIV_3 ;					// Channel 4, ADC10CLK/4
-		ADC10AE0 = BIT4;		 							// Make P1.4 analog input
-		ADC10CTL0 = SREF_0 | ADC10SHT_3 | ADC10ON | ENC;	// Vcc & Vss as reference
+int	getFrontVal(){
+	BCSCTL1 = CALBC1_8MHZ;									// 8MHz clock
+		DCOCTL = CALDCO_8MHZ;
+		ADC10CTL0 = 0;
+		ADC10CTL1 = INCH_3;									// Channel 3
+			ADC10AE0 = BIT2;
+	ADC10CTL1 |= ADC10DIV_3 ;								// ADC10CLK/4
+		ADC10CTL0 = SREF_0 | ADC10SHT_3 | ADC10ON | ENC;		// Vcc & Vss as reference
 
-		ADC10CTL0 |= ADC10SC;								// Start a conversion
-		while(ADC10CTL1 & ADC10BUSY);						// Wait for conversion to complete
-		val += ADC10MEM;
-	}
-		val = val >> 2;
-	return val;
+		ADC10CTL0 |= ADC10SC;									// Start a conversion
+		while(ADC10CTL1 & ADC10BUSY);							// Wait for conversion to complete
+		return ADC10MEM;										// collect that 10-bit value
+
 }
 
 unsigned short getRightInch(){

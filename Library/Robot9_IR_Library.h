@@ -26,7 +26,7 @@
 
 unsigned short	getRightVal();
 unsigned short	getLeftVal();
-unsigned short	getFrontVal();
+int	getFrontVal();
 unsigned short	getRightInch();
 unsigned short	getLeftInch();
 signed	 int	compareSideDist();
